@@ -20,3 +20,11 @@ For the gitbook editor, download from : [https://www.gitbook.com/editor](https:/
 
 To open a repository, under the books menu list go to : GitBook Editor &gt; open
 
+## Step 4: To preview the gitbook
+
+Inside the repository
+
+`gitbook serve`
+
+
+
