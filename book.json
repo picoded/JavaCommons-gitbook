@@ -1,0 +1,9 @@
+{
+	"plugins": [
+		"new-flowchart", 
+		"js-sequence-diagram-full",
+		"mermaid-gb3",
+		"block-align",
+		"hints"
+	]
+}
