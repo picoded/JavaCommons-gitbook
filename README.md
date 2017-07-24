@@ -1,128 +1,62 @@
-# Introduction
+# Picoded.JavaCommons
 
-Hellos : Welcome to git book.
+![Optimize Everything! - JavaCommons in a nutshell](./images/xkcd_the_general_problem.png)
 
-The following is a quick setup on how to use this repository
+JavaCommons is a not a thin specific use case library. Its an extremly fat server-side general purpose library. It has more then a 160+ dependency libraries (before counting nested dependencies), taking 120+ MB in space. Before even including any of its own code.
 
-## Step 1: Clone this repository,
+Because it contains pretty much EVERYTHING we used in one way or another, for a project somewhere, (and still growing). Our new servlet project setup, is normally just use this, and start coding.
 
-or simply copy-paste it
+## Summary of benefits
 
-## Step 2: Open the command line terminal, and run the following
+It hase one core purpose : To let application developers write : __small, efficent, code__
 
-`npm install gitbook-cli@2.3.0 -g`
+This is facilitated by the following features (for application developers)
 
-Note: Until the gitbook issue [https://github.com/GitbookIO/gitbook-cli/issues/68](https://github.com/GitbookIO/gitbook-cli/issues/68) is solved. Its best to be locking version at 2.3.0
++ Allow application developers to write as little backend code as possible (Basic user accounts in 10 lines of code)
++ Write infrastructure / backend independent code, switch between MySQL and NO-SQL with a single config change
++ Reduced dependency-library-hell, by never needing to add another jar. What you need is probably in the 160+ jars already.
++ Integration with vue.js (required node.js to be installed for development / compilation)
 
-For additional plugins, you can modify the `book.json`
+## Summary of downsides
 
-Install the plugins via `gitbook install`
+To achieve these goals, the following compromises have been accepted
 
-Refrence: https://toolchain.gitbook.com/plugins/
+- monolithic library size : We deploy on servers, not mobile phones nor embedded devices. 100MB is nothing.
+- Many many potentially unused JARS : thankfully java does a good job not loading them (http://stackoverflow.com/questions/10980483/impacts-of-having-unused-jar-files-in-classpath)
 
-## Step 3: Open in Gitbook Editor / Preferred editor
+In reality though, just as the image above well illustrate. These problems do not just disappear. They are mitigated away from application to within the library. Where its "time-savings" can only been seen after deploying at scale.
 
-For the gitbook editor, download from : [https://www.gitbook.com/editor](https://www.gitbook.com/editor)
+## Design philosophy
 
-To open a repository, under the books menu list go to : GitBook Editor &gt; open
+![Hmmm....](./images/thinking_emoji.png)
 
-## Step 4: To preview the gitbook
+Anything in this project draws its roots from one client project or another. Generally for any project that we build, with this package. As we add on to the project. We ask this one simple question.
 
-Inside the repository, note that this supports hot reloading =)
+`Is there a good chance this could be reused elsewhere?`
 
-`gitbook serve`
+If so, the code is refactored and moved to JavaCommons. Hence over time, the library grew (PS: The library was originally named ServletCommons)
 
-## Extra Plugins
-By default the following plugins are installed and usable.
+With components going through one, or many iterations of meeting the following guidelines
 
-### Blocks plugin
++ KISS : Keep It Simple Stupid
++ Code maintenance is king
++ Generics over custom classes. (If you can use a Map, use it!, we do not need a class collections hell)
++ Abstract out commonly use patterns into components
++ REUSE INC.
++ 0 Java Warnings (suppress as last resort)
++ Code Coverage with unit test please
 
-#### Hints
+## Segmenting the library
 
-{% hint style='info' %}
-**Info Header**
+To make this who specification guide more digestable, it will be split into the following.
 
-Info text
-{% endhint %}
+* Core Structure and Data Conversion
+* Data Stack : SQL and NO-SQL
+* Servlet and API Builder
+* Frontend vue.js
+* PDF Generator
+* Misc sub-modules
 
-{% hint style='tip' %}
-**Tip Header**
+Note that "pages" in this "book" prefixed with `[Abstract]` refers to meta concepts that heavily influence / explaines certain design decisions. And is not an actual specification.
 
-Tip text
-{% endhint %}
-
-{% hint style='danger' %}
-**Danger Header**
-
-Danger text
-{% endhint %}
-
-{% hint style='Working' %}
-**Working Header**
-
-Working text
-{% endhint %}
-
-See Also:
-+ https://github.com/GitbookIO/plugin-hints
-
-### Code block plugins
-
-#### Mermaid
-
-```mermaid
-graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
-```
-
-See Also: 
-+ https://plugins.gitbook.com/plugin/mermaid-gb3
-+ https://github.com/knsv/mermaid
-
-
-#### Sequence
-``` sequence
-Andrew->China: Says Hello
-Note right of China: China thinks\nabout it
-China-->Andrew: How are you?
-Andrew->>China: I am good thanks!
-```
-
-See Also: 
-+ https://plugins.gitbook.com/plugin/sequence 
-+ https://bramp.github.io/js-sequence-diagrams/
-
-
-#### Flow
-``` flow
-st=>start: Start|past:>http://www.google.com[blank]
-e=>end: End:>http://www.google.com
-op1=>operation: My Operation|past
-op2=>operation: Stuff|current
-sub1=>subroutine: My Subroutine|invalid
-cond=>condition: Yes
-or No?|approved:>http://www.google.com
-c2=>condition: Good idea|rejected
-io=>inputoutput: catch something...|request
-
-st->op1(right)->cond
-cond(yes, right)->c2
-cond(no)->sub1(left)->op1
-c2(yes)->io->e
-c2(no)->op2->e
-```
-
-See Also:
-+ https://plugins.gitbook.com/plugin/new-flowchart
-+ http://flowchart.js.org/
-
-## Custom menu
-See: https://toolchain.gitbook.com/pages.html
-
-## Notes
-
-For a good read on how to write functional specs : 
-https://www.joelonsoftware.com/2000/10/02/painless-functional-specifications-part-1-why-bother/
+With that.... lets get this rolling!
