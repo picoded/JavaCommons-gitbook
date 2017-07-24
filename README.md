@@ -57,6 +57,6 @@ To make this who specification guide more digestable, it will be split into the 
 * PDF Generator
 * Misc sub-modules
 
-Note that "pages" in this "book" prefixed with `[Abstract]` refers to meta concepts that heavily influence / explaines certain design decisions. And is not an actual specification.
+Note that "pages" in this "book" prefixed with `[Concept]` refers to meta concepts that heavily influence / explaines certain design decisions. And is not an actual specification.
 
 With that.... lets get this rolling!
