@@ -24,7 +24,9 @@ Read operations is done from the start of the stack, where data is present, unti
 
 Write operations is done from the end of the stack, the 'source-of-truth', and up the stack till be beginning.
 
-## Typical small deployment / development
+## Example deployment stacks
+
+### Typical small deployment / development
 
 A typical small deployment / development environment, is typically a 2 layer stack.
 
@@ -36,7 +38,7 @@ A typical small deployment / development environment, is typically a 2 layer sta
 ]
 ```
 
-### (Level 0) : request data cache
+#### (Level 0) : request data cache
 
 At the first layer, is the `L0 : request data cache`, which helps cache various repeated read calls made within a single request. 
 
@@ -46,7 +48,7 @@ However due to the lack of data in this layer, typically it does not have any qu
 
 With the exception of long running background threads, or a single request spanning multiple thread. This should be used all the time.
 
-### (Level 2~3) : SQL backend
+#### (Level 2~3) : SQL backend
 
 At the second layer, is the `L2 / 3 : SQL backend`, this act as the 'source of truth', and facilitate all operations beyond simple read and write. Such as query or aggregations.
 
@@ -54,7 +56,7 @@ Development is typically an `L2` with SQLite as local backend, or a development 
 
 Deployment is typically an `L3` with mysql backend, with a failover read-replica.
 
-## Large scale deployment
+### Large scale deployment
 
 Once the `source-of-truth` backend starts to face performance issue, typically a cache is deployed. Typically this would be a multiple application node deployment.
 
@@ -67,17 +69,17 @@ Once the `source-of-truth` backend starts to face performance issue, typically a
 ]
 ```
 
-### (level 0) : request data cache
+#### (level 0) : request data cache
 
 Once again this provides read cache for a single API request
 
-### (level 3) : distributed cache
+#### (level 3) : distributed cache
 Distributed data cache, that is shared across all instances and requests. Typically this would be a subset of the data, which is most typically used. ![Under the hot and cold data concept](http://www.ibmbigdatahub.com/blog/your-big-data-hot-warm-or-cold), this is typically hot data.
 
-### (level 3) : SQL backend
+#### (level 3) : SQL backend
 `L3` sql backend with failover read-replica
 
-## Cloud scale deployment
+### Cloud scale deployment
 
 Other more "interesting" deployments can also be performed for 'cloud scale', with no single point of failure.
 
@@ -92,12 +94,12 @@ Other more "interesting" deployments can also be performed for 'cloud scale', wi
 
 The interesting thing of such a deployment, is that the typical SQL will no longer be needed.
 
-### (level 3) : Distributed aggregation and query index
+#### (level 3) : Distributed aggregation and query index
 
 A typical use case would be ElasticSearch cluster : in such a deployment, data that is not part of the aggregation / query index, will be discarded. To reduce the overhead involved in maintaining such a cluster. In such a deployment, query and aggregation follows the concept of eventual consistency (a limitation of elasticsearch)
 
-### (level 3~4) : Object storage backend
+#### (level 3~4) : Object storage backend
 
 A varient of S3 where atomic read-after-write, and read-after-update is maintained. Major examples including Google Cloud storage. 
 
-This represents the raw single source of truth for data, but does not provide any aggregation or query functionality. While such functionality could be polyfilled, with they will typically require the scanning of all objects. Which would in most cases be extremely slow.
+This represents the "source of truth" for data, but does not provide any aggregation or query functionality. While such functionality could be polyfilled, with they will typically require the scanning of all objects. Which would in most cases be extremely slow.
