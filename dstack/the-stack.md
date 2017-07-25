@@ -44,6 +44,8 @@ A common example would be user information, where it is used for authentication,
 
 However due to the lack of data in this layer, typically it does not have any query or aggregation capabilities, which is handled by the other stack layers.
 
+With the exception of long running background threads, or a single request spanning multiple thread. This should be used all the time.
+
 ### (Level 2~3) : SQL backend
 
 At the second layer, is the `L2 / 3 : SQL backend`, this act as the 'source of truth', and facilitate all operations beyond simple read and write. Such as query or aggregations.
@@ -56,7 +58,7 @@ Deployment is typically an `L3` with mysql backend, with a failover read-replica
 
 Once the `source-of-truth` backend starts to face performance issue, typically a cache is deployed. Typically this would be a multiple application node deployment.
 
-(@TODO : Insert pancake of 2 layers)
+(@TODO : Insert pancake of 3 layers)
 ``` javascript
 [
 	"RequestCache",
@@ -70,4 +72,32 @@ Once the `source-of-truth` backend starts to face performance issue, typically a
 Once again this provides read cache for a single API request
 
 ### (level 3) : distributed cache
-Distributed data cache, that is shared across all instances and requests. Typically this would be a subset of the data, which is most typically used. Under the hot and cold data concept, this is typically hot data.
+Distributed data cache, that is shared across all instances and requests. Typically this would be a subset of the data, which is most typically used. ![Under the hot and cold data concept](http://www.ibmbigdatahub.com/blog/your-big-data-hot-warm-or-cold), this is typically hot data.
+
+### (level 3) : SQL backend
+`L3` sql backend with failover read-replica
+
+## Cloud scale deployment
+
+Other more "interesting" deployments can also be performed for 'cloud scale', with no single point of failure.
+
+(@TODO : Insert pancake of 3 layers)
+``` javascript
+[
+	"RequestCache",
+	"AggregationAndQueryIndex",
+	"ObjectStorage"
+]
+```
+
+The interesting thing of such a deployment, is that the typical SQL will no longer be needed.
+
+### (level 3) : Distributed aggregation and query index
+
+A typical use case would be ElasticSearch cluster : in such a deployment, data that is not part of the aggregation / query index, will be discarded. To reduce the overhead involved in maintaining such a cluster. In such a deployment, query and aggregation follows the concept of eventual consistency (a limitation of elasticsearch)
+
+### (level 3~4) : Object storage backend
+
+A varient of S3 where atomic read-after-write, and read-after-update is maintained. Major examples including Google Cloud storage. 
+
+This represents the raw single source of truth for data, but does not provide any aggregation or query functionality. While such functionality could be polyfilled, with they will typically require the scanning of all objects. Which would in most cases be extremely slow.
