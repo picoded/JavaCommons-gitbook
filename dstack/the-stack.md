@@ -1,4 +1,4 @@
-# The (Data) Stack
+# The Data Stack
 
 The data stack represents a common interface to access and mainpulate data information across a variety of backends.
 
@@ -74,7 +74,7 @@ Once the `source-of-truth` backend starts to face performance issue, typically a
 Once again this provides read cache for a single API request
 
 #### (level 3) : distributed cache
-Distributed data cache, that is shared across all instances and requests. Typically this would be a subset of the data, which is most typically used. ![Under the hot and cold data concept](http://www.ibmbigdatahub.com/blog/your-big-data-hot-warm-or-cold), this is typically hot data.
+Distributed data cache, that is shared across all instances and requests. Typically this would be a subset of the data, which is most typically used. [Under the hot and cold data concept](http://www.ibmbigdatahub.com/blog/your-big-data-hot-warm-or-cold), this is typically hot data.
 
 #### (level 3) : SQL backend
 `L3` sql backend with failover read-replica
@@ -102,4 +102,10 @@ A typical use case would be ElasticSearch cluster : in such a deployment, data t
 
 A varient of S3 where atomic read-after-write, and read-after-update is maintained. Major examples including Google Cloud storage. 
 
-This represents the "source of truth" for data, but does not provide any aggregation or query functionality. While such functionality could be polyfilled, with they will typically require the scanning of all objects. Which would in most cases be extremely slow.
+This represents the "source of truth" for data, but does not provide any aggregation or query functionality. While such functionality could be polyfilled, this will typically require the scanning of all objects. Which would in most cases be extremely slow.
+
+### Wrapping up
+
+In overall, the key take away of building an application via "Data Stack" is that application developers can rapidly implement their front end without worrying the backend.
+
+And the backend have full flexibility for the devops team on how it would be deployed.
