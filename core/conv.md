@@ -142,8 +142,7 @@ returns <i>a random 22 character base64 GUID string.</i>
 
 ## ListValueConv
 
-A utility conversion class to help convert Map values from one type to another, such as to strings or string arrays.
-
+A utility conversion class to help convert List values from one type to another.
 Example of methods:
 
 + objectListToStringArray
@@ -151,11 +150,53 @@ Example of methods:
 + deduplicateValuesWithoutArrayOrder
 + toStringSet
 
-
-
 ## MapValueConv
 
+A utility conversion class to help convert Map values from one type to another.
+Example of methods:
+
++ listToArray
++ singleToArray
++ fromFullyQualifiedKeys
++ toFullyQualifiedKeys
+
 ## NestedObject
+
+Class to handle the manipulation of nested objects, in a Map/List.
+
+{% hint style='info' %}
+**NestedObject History**
+
+Originally a part of the GenericConvert class, but has since been extracted and isolated.
+
+{% endhint %}
+
+{% hint style='Working' %}
+**Example of method**
+
+<b>public static <K,V> void unpackFullyQualifiedNameKeys(java.util.Map<K,V> inMap)
+</b>
+
+Takes in a map, search its keys for Fully Qualified Name formatting. Unpack the various key / values related to it.
+
+So for example,
+
+{ "a[0].b" : "hello" }
+
+Will unpack to
+
+			{
+                "a" : [
+                        {
+                                "b" : "hello"
+                        }
+                ]
+			}
+
+This Unpacks all keynames, and rewrites any underlying map/list implementation if needed. Note that while this helps normalize input parameters against a large collection of format interpration, its implications are rarely well understood when things does not work as intended.
+
+
+{% endhint %}
 
 ## RegexUtil
 
