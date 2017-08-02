@@ -8,7 +8,7 @@ Because it contains pretty much EVERYTHING we used in one way or another, for a 
 
 ## Summary of benefits
 
-It hase one core purpose : To let application developers write : __small, efficent, code__
+It has one core purpose : To let application developers write : __small, efficent, code__
 
 This is facilitated by the following features (for application developers)
 

@@ -2,6 +2,8 @@
 
 * [Introduction](README.md)
 * Core Structure and Data Conversion
+	* [Conversion Library](core/conv.md)
+	* [Structure](core/struct.md)
 * Data Stack : SQL and NO-SQL
 	* [\[Concept\] Data persistence levels](dstack/CONCEPT-data-levels.md)
 	* [The Data Stack](dstack/the-stack.md)
@@ -11,3 +13,5 @@
 * Frontend vue.js
 * PDF Generator
 * Misc sub-modules
+
+* [Misc gitbook](gitbook-readme.md)
