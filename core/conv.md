@@ -21,6 +21,17 @@ With reference to https://en.wikipedia.org/wiki/Base64, but not used as such. Si
 
 BaseX acts as our library's foundational constructor for the creation of a unique/custom character set (charset). It is not built for performance on large input streams (20 bytes and above) as input values are collected internally into a BigInteger.
 
+{% hint style='Working' %}
+**Constructor**
+
++ BaseX(java.lang.String customCharset)
+
+**Methods Summary**
+
++ bitToStringLength(), charset(), decode(), encode(), md5hash(), sha1hash(), sha256hash(), stringToBitLength()
+
+{% endhint %}
+
 ### Base62
 
 Base62 is the custom charset created consisting the characters of 'A-Z', 'a-z', '0-9' and omitting characters '+', '='.
@@ -31,6 +42,18 @@ Base62 is the custom charset created consisting the characters of 'A-Z', 'a-z', 
 + A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 + a b c d e f g h i j k l m n o p q r s t u v w x y z
 + 0 1 2 3 4 5 6 7 8 9
+
+{% endhint %}
+
+{% hint style='Working' %}
+**Constructor**
+
++ Base62()
++ Base62(java.lang.String customCharset)
+
+**Methods Summary**
+
++ getInstance()
 
 {% endhint %}
 
@@ -49,9 +72,24 @@ The default charset is based off bitcoin base58 charset, as explained on :http:/
 
 {% endhint %}
 
+{% hint style='Working' %}
+**Constructor**
+
++ Base58()
++ Base58(java.lang.String customCharset)
+
+**Methods Summary**
+
++ getInstance()
+
+{% endhint %}
+
 ## ConvertJSON
 
 ConvertJSON is a JSON simplifier which can be used to convert input maps, arrays, lists and objects into JSON strings and vice versa.
+
+{% hint style='Working' %}
+**Methods Summary**
 
 Examples of methods (from input to JSON string):
 
@@ -59,7 +97,10 @@ Examples of methods (from input to JSON string):
 
 (from JSON string to input structure):
 
-+ toMap, toList, toObject, toCustomClass, toObjectArray, toStringArray, toDoubleArray, toIntArray, toFloatArray, toLongArray
++ toMap(), toList(), toObject(), toCustomClass(), toObjectArray(), toStringArray(), toDoubleArray(), toIntArray(), toFloatArray(), toLongArray()
+
+{% endhint %}
+
 
 ### ConvertJSON.InvalidFormatJSON
 
@@ -71,9 +112,14 @@ Can be treated as a RuntimeException, and IllegalArgumentException.
 
 ConvertXML is a XML simplifier which can be used to convert XML strings to a structure.
 
+{% hint style='Working' %}
+**Methods Summary**
+
 Examples of methods (from XML string to structure):
 
-+ toMap, toCollapsedMap
++ toMap(), toCollapsedMap()
+
+{% endhint %}
 
 ### ConvertXML.InvalidFormatXML
 
@@ -93,12 +139,15 @@ Its pattern is inherited into all the GenericConvert struct classes, allows for 
 
 This split is was done to simplify code maintenance of this package.
 
-Methods include:
-
-+ 'to', 'fetch', 'split', 'normalize'
-
 {% hint style='Working' %}
-**Example of method**
+**Methods Summary**
+
++ to(), fetch(), split(), normalize()
+
+{% endhint %}
+
+{% hint style='tip' %}
+**Example Usage**
 
 toGenericConvertList conversion of generic object
 
@@ -109,8 +158,8 @@ Performs the following strategies in the following order
 + toList -> GenericConvertList conversion
 + Fallback
 
-<b>public static <V> GenericConvertList<V> toGenericConvertList(java.lang.Object input,
-                                                             java.lang.Object fallbck)</b>
+	public static <V>GenericConvertList<V> 
+	toGenericConvertList(java.lang.Object input, java.lang.Object fallbck)
 
 where,
 + input = input value to convert
@@ -124,12 +173,12 @@ and returning the converted value.
 
 Provide several Globally Unique Identifier (GUID) functionalities. Namely paired with other conversion classes, input with the Unique GUID Value (UUID) to return a UUId object and arrays.
 
-{% hint style='Working' %}
-**Example of method**
+{% hint style='tip' %}
+**Example Usage**
 
 Paired with Base64
 
-<b>public static java.lang.String base64()</b>
+	public static java.lang.String base64()
 
 with,
 
@@ -143,22 +192,24 @@ returns <i>a random 22 character base64 GUID string.</i>
 ## ListValueConv
 
 A utility conversion class to help convert List values from one type to another.
-Example of methods:
 
-+ objectListToStringArray
-+ objectToString
-+ deduplicateValuesWithoutArrayOrder
-+ toStringSet
+{% hint style='Working' %}
+**Methods Summary**
+
++ objectListToStringArray(), objectToString(), deduplicateValuesWithoutArrayOrder(), toStringSet()
+
+{% endhint %}
 
 ## MapValueConv
 
 A utility conversion class to help convert Map values from one type to another.
-Example of methods:
 
-+ listToArray
-+ singleToArray
-+ fromFullyQualifiedKeys
-+ toFullyQualifiedKeys
+{% hint style='Working' %}
+**Methods Summary**
+
++ listToArray(), singleToArray(), fromFullyQualifiedKeys(), toFullyQualifiedKeys()
+
+{% endhint %}
 
 ## NestedObject
 
@@ -171,17 +222,17 @@ Originally a part of the GenericConvert class, but has since been extracted and 
 
 {% endhint %}
 
-{% hint style='Working' %}
-**Example of method**
+{% hint style='tip' %}
+**Example Usage**
 
-<b>public static <K,V> void unpackFullyQualifiedNameKeys(java.util.Map<K,V> inMap)
-</b>
+	public static <K,V> void unpackFullyQualifiedNameKeys(java.util.Map<K,V> inMap)
+
 
 Takes in a map, search its keys for Fully Qualified Name formatting. Unpack the various key / values related to it.
 
 So for example,
 
-{ "a[0].b" : "hello" }
+	{ "a[0].b" : "hello" }
 
 Will unpack to
 
@@ -200,4 +251,31 @@ This Unpacks all keynames, and rewrites any underlying map/list implementation i
 
 ## RegexUtil
 
+Utility function to do a common regex search and replace.
+
+{% hint style='tip' %}
+**Example Usage**
+
+	public static java.lang.String removeAllWhiteSpace(java.lang.String input)
+
+where input string could be "AB CD", and using \s to remove white space,
+
+returns "ABCD"
+{% endhint %}
+
 ## StringEscape
+
+A proxy to apache.commons.lang3.StringEscapeUtils.
+
+See: https://commons.apache.org/proper/commons-lang/javadocs/api-3.1/org/apache/commons/lang3/StringEscapeUtils.html
+
+{% hint style='tip' %}
+**Example Usage**
+
+………………………………………………………….javaS
+
+Notable static functions inherited (all with single string input) + escapeCsv + escapeEmacScript + escapeHtml4 + escapeHtml3 + escapeJava + escapeCsv
+
+And its inverse function inherited (all with single string input) + unescapedCsv + unescapedEmacScript + unescapedHtml4 + unescapedHtml3 + unescapedJava + unescapedCsv
+
+{% endhint %}

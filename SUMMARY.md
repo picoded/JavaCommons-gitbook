@@ -4,6 +4,7 @@
 * Core Structure and Data Conversion
 	* [Conversion Library](core/conv.md)
 	* [Structure](core/struct.md)
+	* [Set](core/set.md)
 * Data Stack : SQL and NO-SQL
 	* [\[Concept\] Data persistence levels](dstack/CONCEPT-data-levels.md)
 	* [The Data Stack](dstack/the-stack.md)
