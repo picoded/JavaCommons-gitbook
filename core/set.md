@@ -1,6 +1,7 @@
 # Set
 
-------------------------------------------------------------------------------------
+`picoded.core.enum` would have been a better namespace, however enum was a keyword
+
 ------------------------------------------------------------------------------------
 
 ## Classes
@@ -13,6 +14,7 @@ Similar through all classes.
 Inherited from class java.lang.Object
 
 + equals, getClass, hashCode, notify, notifyAll, toString, wait
+{% endhint %}
 
 ------------------------------------------------------------------------------------
 
@@ -75,7 +77,6 @@ Note: EXTREME care should be taken if these objects are passed between different
 
 ## Enumerations
 
-------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------
 
 ### HttpRequestType

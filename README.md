@@ -48,14 +48,33 @@ With components going through one, or many iterations of meeting the following g
 
 ## Segmenting the library
 
+![Sandwich...](./images/sandwich_on_toast.jpg)
+
 To make this who specification guide more digestable, it will be split into the following.
 
-* Core Structure and Data Conversion
-* Data Stack : SQL and NO-SQL
+* [Core Structure and Data Conversion](core/the-core.md)
+* [Utilities of random stuff](util/the-random-stuff.md)
+* [Data Stack : SQL and NO-SQL](dstack/the-dstack.md)
 * Servlet and API Builder
 * Frontend vue.js
 * PDF Generator
-* Misc sub-modules
+
+{% hint style='tip' %}
+If JavaCommons was a sandwich, the following would be the ingrediants
+
+* Core - Bread
+* Util - Butter on the bread
+* Data Stack - Meaty ham
+* Servlet - Plate, menu, and toaster
+* Frontend - Lecttuce and dressings
+* PDF Generator - condiment of Mayonnaise and tomato sauce
+
+Hmm... where was the salt again?
+{% endhint %}
+
+{% hint style='danger' %}
+**Breaking Namespace Changes:** in an effort to better segment the libraries, namespace changes may occur incrementally, to confrom to this specification. For example `picoded.struct` would be migrated to `picoded.core.struct`
+{% endhint %}
 
 Note that "pages" in this "book" prefixed with `[Concept]` refers to meta concepts that heavily influence / explaines certain design decisions. And is not an actual specification.
 

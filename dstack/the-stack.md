@@ -1,6 +1,6 @@
 # The Data Stack
 
-The data stack represents a common interface to access and mainpulate data information across a variety of backends.
+The data stack represents a common interface to access and mainpulate data information across a variety of backends. 
 
 **Pros:** 
 
