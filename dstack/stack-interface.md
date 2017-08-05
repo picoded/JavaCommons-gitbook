@@ -4,7 +4,7 @@ For this "Data Stack" implementation to work, the following standardised interfa
 
 Further break down on its details will be elaborated subsequently.
 
-## MetaTable / MetaObject
+## DataTable / DataObject
 
 Probably the core blessing & curse of the whole "Data Stack" concept. This represents a NO-SQL interface. In which object maps, are stored in "whichever" format that is given.
 
@@ -12,7 +12,7 @@ Allowing front-end and application developers to quickly, and very rapidly build
 
 Fixed indexes can then be put in place to subsequently optimize certain key information, for query and/or aggregation purposes.
 
-Main purpose is to function as map object storage, for any form of data.
+Main purpose is to function a generic way to store, and retrive maps, of any kind of data.
 
 ## KeyValueMap
 
