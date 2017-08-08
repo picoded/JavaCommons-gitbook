@@ -32,6 +32,7 @@ BaseX acts as our library's foundational constructor for the creation of a uniqu
 
 {% endhint %}
 
+
 ### Base62
 
 Base62 is the custom charset created consisting the characters of 'A-Z', 'a-z', '0-9' and omitting characters '+', '='.
@@ -56,6 +57,7 @@ Base62 is the custom charset created consisting the characters of 'A-Z', 'a-z', 
 + getInstance()
 
 {% endhint %}
+
 
 ### Base58
 
@@ -84,6 +86,7 @@ The default charset is based off bitcoin base58 charset, as explained on :http:/
 
 {% endhint %}
 
+
 ## ConvertJSON
 
 ConvertJSON is a JSON simplifier which can be used to convert input maps, arrays, lists and objects into JSON strings and vice versa.
@@ -102,11 +105,13 @@ Examples of methods (from input to JSON string):
 {% endhint %}
 
 
+
 ### ConvertJSON.InvalidFormatJSON
 
 Illegal JSON format type. Used to handle all format exceptions in this class.
 
 Can be treated as a RuntimeException, and IllegalArgumentException.
+
 
 ## ConvertXML
 
@@ -121,15 +126,18 @@ Examples of methods (from XML string to structure):
 
 {% endhint %}
 
+
 ### ConvertXML.InvalidFormatXML
 
 Illegal JSON format type. Used to handle all format exceptions in this class.
 
 Can be treated as a RuntimeException, and IllegalArgumentException.
 
+
 ## DateConv
 
 DateConv acts as the library's convenience class to convert between date types. The default date format is DD-MM-YYYY.
+
 
 ## GenericConvert
 
@@ -158,7 +166,7 @@ Performs the following strategies in the following order
 + toList -> GenericConvertList conversion
 + Fallback
 
-	public static <V>GenericConvertList<V> 
+	public static <V>GenericConvertList<V>
 	toGenericConvertList(java.lang.Object input, java.lang.Object fallbck)
 
 where,
@@ -168,6 +176,7 @@ where,
 and returning the converted value.
 
 {% endhint %}
+
 
 ## GUID
 
@@ -189,6 +198,7 @@ returns <i>a random 22 character base64 GUID string.</i>
 
 {% endhint %}
 
+
 ## ListValueConv
 
 A utility conversion class to help convert List values from one type to another.
@@ -200,6 +210,7 @@ A utility conversion class to help convert List values from one type to another.
 
 {% endhint %}
 
+
 ## MapValueConv
 
 A utility conversion class to help convert Map values from one type to another.
@@ -210,6 +221,7 @@ A utility conversion class to help convert Map values from one type to another.
 + listToArray(), singleToArray(), fromFullyQualifiedKeys(), toFullyQualifiedKeys()
 
 {% endhint %}
+
 
 ## NestedObject
 
@@ -249,6 +261,7 @@ This Unpacks all keynames, and rewrites any underlying map/list implementation i
 
 {% endhint %}
 
+
 ## RegexUtil
 
 Utility function to do a common regex search and replace.
@@ -262,6 +275,7 @@ where input string could be "AB CD", and using \s to remove white space,
 
 returns "ABCD"
 {% endhint %}
+
 
 ## StringEscape
 
