@@ -1,10 +1,51 @@
 # Core Stack Interface
 
-For this "Data Stack" implementation to work, the following standardised interface was implemented. Each serving a specialized role. These form the foundation of "The Data Stack" which is supported across a variety of backend.
+For this "Data Stack" implementation to work, the following standardized interface was implemented. Each serving a specialized role. These form the foundation of "The Data Stack" which is supported across a variety of backend.
 
 Further break down on its details will be elaborated subsequently.
 
-## DataTable / DataObject
+CorePage request process flow
+
+```mermaid
+graph LR
+	spawnInstance ---|+| doOption
+	doOption ---|+| doPost
+	doPost ---|+| doGet
+	doGet ---|+| doDelete
+	doDelete ---|+| doPut
+	doPut ---|+| doHead
+	spawnInstance --> processChain
+	processChain --- doSharedSetup
+	doSharedSetup ---|&| doSetup
+	doSharedSetup --- doAuth
+	doAuth --- doSharedTeardown
+	doSharedTeardown ---|&| doTeardown
+	doAuth --> doRequest
+	doRequest --> do_X_Request
+	do_X_Request --> outputRequest
+	doAuth -->|isJsonRequest == true| doJson
+	doJson --> do_X_Json
+	do_X_Json --> outputJSON
+```
+
+Corepage lifecycle process flow
+
+```flow
+lcp1a=>operation: contextInitialized
+lcp2a=>operation: doSharedSetup
+lcp3a=>operation: initializeContext
+
+lcp1a(right)->lcp2a(right)->lcp3a
+```
+```flow
+lcp1b=>operation: contextDestroyed
+lcp2b=>operation: doSharedTeardown
+lcp3b=>operation: destroyContext
+
+lcp1b(right)->lcp2b(right)->lcp3b
+```
+
+## MetaTable / MetaObject
 
 Probably the core blessing & curse of the whole "Data Stack" concept. This represents a NO-SQL interface. In which object maps, are stored in "whichever" format that is given.
 
@@ -12,7 +53,7 @@ Allowing front-end and application developers to quickly, and very rapidly build
 
 Fixed indexes can then be put in place to subsequently optimize certain key information, for query and/or aggregation purposes.
 
-Main purpose is to function a generic way to store, and retrive maps, of any kind of data.
+Main purpose is to function as map object storage, for any form of data.
 
 ## KeyValueMap
 

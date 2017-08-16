@@ -1,11 +1,7 @@
 # Structure
 
-------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------
 
 ## Interfaces
-
-------------------------------------------------------------------------------------
 
 ### GenericConvertList
 
@@ -30,8 +26,6 @@ Library Modules (unique to our library)
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
-
 #### UnsupportedDefaultList
 
 Interface pattern, that implements most of the default list functions, This builds on top of core functions, in which implementors of this interface will need to support.
@@ -53,7 +47,7 @@ This interface allows a programmer, to rapidly implement a Map object from any c
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
+
 
 ### GenericConvertMap
 
@@ -78,7 +72,7 @@ Library Modules (unique to our library)
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
+
 
 #### UnsupportedDefaultMap
 
@@ -99,11 +93,8 @@ This interface allows a programmer, to rapidly implement a Map object from any c
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ## Classes
-
-------------------------------------------------------------------------------------
 
 ### ArbitaryListIterator
 
@@ -124,7 +115,7 @@ This can be used either as Iterator, or ListIterator
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
+
 
 ### ArrayListMap
 
@@ -141,7 +132,6 @@ Provides a HashMap<K,A ArrayList>, with utility functions to edit records.
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ### CaseInsensitiveHashMap
 
@@ -174,7 +164,6 @@ As this class extends HashMap directly, several of its common functionalities ar
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ### DeferredMapEntry
 
@@ -195,7 +184,6 @@ This is used by default in UnsupportedDefaultMap.
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ### GenericConvertArrayList
 
@@ -213,7 +201,6 @@ Generic utility to convert array lists into other types.
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ### GenericConvertHashMap
 
@@ -245,7 +232,6 @@ Note: If you are programming interfaces, use GenericConvertMap instead, it has a
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ### HashMapList
 
@@ -262,7 +248,6 @@ Convenience class, for creating a Map containing list values, and appending them
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ### MutablePair
 
@@ -291,7 +276,6 @@ See: http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/la
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ### ProxyGenericConvertList
 
@@ -317,7 +301,6 @@ This class provides a static constructor, that builds the wrapper to ensure a Ge
 
 {% endhint %}
 
-------------------------------------------------------------------------------------
 
 ### ProxyGenericConvertMap
 
@@ -332,5 +315,3 @@ This class provides a static constructor, that builds the wrapper to ensure a Ge
 + ensure(), toString()
 
 {% endhint %}
-
-------------------------------------------------------------------------------------
