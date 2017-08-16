@@ -7,4 +7,6 @@ This uses the `picoded.util` namespace and contains the following.
 + `picoded.util.web` : Web and email connection / request utilties
 + `picoded.util.security` : Password hashing, cryptography, and authentication utilities
 
-> If core is the bread, this would be the butter. Adding much flavour to otherwise a simple bread.
+{% hint style='tip' %}
+If core is the bread, this would be the butter. Adding much flavour to otherwise a simple bread.
+{% endhint %}

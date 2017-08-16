@@ -2,9 +2,13 @@
 
 ![Optimize Everything! - JavaCommons in a nutshell](./images/xkcd_the_general_problem.png)
 
-JavaCommons is a not a thin specific use case library. Its an extremly fat server-side general purpose library. It has more then a 160+ dependency libraries (before counting nested dependencies), taking 120+ MB in space. Before even including any of its own code.
+JavaCommons is a not a thin specific use case library. 
 
-Because it contains pretty much EVERYTHING we used in one way or another, for a project somewhere, (and still growing). Our new servlet project setup, is normally just use this, and start coding.
+Its an extremly fat server-side general purpose library, with more then a 160+ dependency libraries (before counting nested dependencies), taking over 120+ MB in space. 
+
+All before even including any of its own code.
+
+As this contains pretty much ALMOST EVERYTHING we used in one way or another, for a project somewhere, (and still growing). Our new servlet project setup, is normally just use this, and start coding.
 
 ## Summary of benefits
 
@@ -46,7 +50,7 @@ With components going through one, or many iterations of meeting the following g
 + 0 Java Warnings (suppress as last resort)
 + Code Coverage with unit test please
 
-## Segmenting the library
+## Slicing the library
 
 ![Sandwich...](./images/sandwich_on_toast.jpg)
 
