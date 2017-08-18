@@ -166,6 +166,80 @@ Moving on, the JS Api script generation functionality is of course to generate a
 
 Swagger and RAML integration is meant to be used for generating documentation more efficiently and effectively for programmers.
 
+As for generating documentation in compliance with Swagger/RAML, below states the flow of configuring and generating the documentation
+
+```mermaid
+graph LR
+	A["Each API Endpoint"] -->|has| Document
+	ApiDocumentSet -->|contains >= 1| Document
+	ApiDocumentSet -->|attribute of| B["ApiBuilder"]
+	B -->|calls| C["api.document(path, Document)"]
+	B -->|calls| D["api.generateDoc()"]
+
+```
+
+We treat the information of each endpoint as **Document** so that we can easily set and alter the information as necessary. With a set of **Document**,
+it forms **ApiDocumentSet** which is a list of **Document** that is contain within ApiBuilder class.
+Example:
+If you want to initialize a **Document** for the endpoint and its inner classes
+```
+  Document doc = new Document();
+  Document.Request req = doc.new Request();
+  Document.Response res = doc.new Response();
+```
+Initializing with Parameters
+```
+  String[] tags = new String[]{"first", "second"};
+  Document doc = new Document("endpointName", "It's an endpoint", tags);
+  Map<String, Triple<String, String>> params = new HashMap<>();
+  Triple<String, String, Boolean> paramInfo = new Triple<String, String, Boolean>
+  											("String", "the name of user", true);
+  params.add("username", paramInfo);
+  Document.Request req = doc.new Request(params);
+  paramInfo = new Triple<String, String, Boolean>
+  			("Object", "the metaObject or error", null);
+  Document.Response res = doc.new Response(params, "The object was returned");
+```
+Adding information to the **Document**
+```
+  doc.setName(name);
+  doc.setDesc(desc);
+  doc.setTags(tags);
+  doc.setRequestParams(params);
+  doc.setResponseReturn(params);
+```
+Generate documentation YAML String
+```
+  api.generateDoc();
+```
+
+{% hint style='tip' %}
+**Full Example**
+```
+  ApiBuilder api = new ApiBuilder();
+  api.put("deepOcean", lambdaFunc);//
+  where lambdaFunc is the BiFunction<ApiRequest, ApiResponse, ApiResponse> method
+  String[] tags = new String[]{"ocean", "deep"};
+  Document doc = new Document("deepOcean", "A new path for a new world", tags);
+
+  Map<String, Triple<String, String>> params = new HashMap<>();
+  // Set param information
+  Triple<String, String, Boolean> paramInfo = new Triple<String, String, Boolean>
+  									("String", "the name of fish god", true);
+  // Add parameter with its information
+  params.add("godName", paramInfo);
+  paramInfo = new Triple<String, String, Boolean>
+  			("String", "the ability of fish god", true);
+  params.add("godAbility", paramInfo);
+
+  // Set the parameters to the document
+  doc.setRequestParams(params);
+  // Add to ApiDocumentSet
+  api.document("deepOcean", doc);
+  //Generate YAML
+  api.generateDoc();
+```
+{% endhint %}
 
 {% hint style='Working' %}
 **Constructor**
@@ -247,11 +321,9 @@ The ApiModule template.
 {% hint style='Working' %}
 **Fields Summary**
 
-+ ERROR_(DEFAULT, FAILED_LOGIN, INVALID_FORMAT_JSON, NO_GROUP, NO_GROUP_ID, NO_GROUPNAME, NO_LOGIN_ID, NO_LOGIN_PASSWORD, NO_META, NO_NEW_PASSWORD, NO_NEW_REPEAT_PASSWORD, NO_PASSWORD, NO_PRIVILEGES, NO_ROLE, NO_USER, NO_USER_ID, NO_USERNAME, NOT_GROUP, NOT_IN_GROUP_OR_ROLE, PASS_INCORRECT, PASS_NOT_EQUAL)
-+ GROUP
-+ REQ_(ACCOUNT_ID, ACCOUNT_NAME, ADD_LIST, DEFAULT_ROLES, GROUP_ID, GROUPNAME, HEADERS, IS_GROUP, META, NEW_PASSWORD, OID, OLD_PASSWORD, PASSWORD, REMEMBER_ME, REMOVE_LIST, REPEAT_PASSWORD, ROLE, SANITISE_OUTPUT, UPDATE_MODE, USER_ID, USERNAME)
-+ RES_(ACCOUNT_ID, DATA, DRAW, ERROR, FAIL_ADD, FAIL_REMOVE, GROUP_ID, HEADERS, IS_LOGIN, LIST, LOGIN_ID_LIST, META, RECORDS_FILTERED, RECORDS_TOTAL, REMEMBER_ME, RETURN, SINGLE_RETURN_VALUE, SUCCESS, SUCCESS_ADD, SUCCESS_REMOVE, UPDATE_MODE)
-+ SPACE
++ ERROR_()
++ REQ_()
++ RES_()
 
 **Constructor**
 
