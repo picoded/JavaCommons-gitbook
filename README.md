@@ -69,7 +69,7 @@ If JavaCommons was a sandwich, the following would be the ingrediants
 * Core - Bread
 * Util - Butter on the bread
 * Data Stack - Meaty ham
-* Servlet - Plate, menu, and toaster
+* Servlet - Menu, Plate, Fork and Spoons
 * Frontend - Lecttuce and dressings
 * PDF Generator - condiment of Mayonnaise and tomato sauce
 

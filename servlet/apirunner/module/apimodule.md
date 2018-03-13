@@ -8,10 +8,10 @@ These modules in addition, will have configurable options, such as defaults in l
 
 The core function it will need to support is as followed
 
-## setupApiBuilder
+## configSetup, and dStack commands
 
-Takes in the following parameters
-
+### configSetup
+A module is required to take in a configSetup, this ideally should only be called once. By the constructor.
 + api        : ApiBuilder object to build endpoints and filters on
 + prefixPath : API prefix path before all the modules specific endpoints
 + config     : Configuration map object, used to adjust module behaviour

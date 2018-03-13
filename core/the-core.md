@@ -4,7 +4,7 @@ This uses the `picoded.core` namespace, and contains the following.
 
 + `picoded.core.conv` : Perform the conversion of one in-memory data strcture, from one type to another.
 + `picoded.core.struct` : Easy to implement interfaces for common data structure types, alone with ready to use implementation.
-+ `picoded.core.set` : Predefined enums / set's used for data exchange between components. 
++ `picoded.core.common` : Predefined enums / set / interfaces used for data exchange between larger components. 
 
 In general due to to its lower level usage, this library is used extensively by the additional library layers, with limited dependencies (beyond apache commons).
 
